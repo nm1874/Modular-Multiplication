@@ -1,0 +1,36 @@
+
+Mod.multiply <- function(x,y,z){
+  a <- (x*y) %% z
+  return (a)
+}
+
+
+Mod.coprime <- function(z){
+  prime <- c()
+  coprime <- c(1:(z-1))
+  
+  for (i in coprime) {
+    if (z%%i == 0) {prime <-c(prime, i)}
+  }
+  prime <- prime[prime!=1]
+  
+  for (x in prime) {
+    for (j in coprime) {
+      if (j%%x == 0) {
+        coprime <- coprime[coprime != j]
+      }
+    }
+  }
+  return (coprime)
+}
+
+
+Mod.order <- function(i, n) {
+  a <- i
+  o <- 1
+  while (a != 1) {
+    a <- (a*i) %% n
+    o <- o + 1
+  }
+  return(o)
+}
